@@ -1,7 +1,7 @@
 # Markdown Flow
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hrisheesh/markdown-flow/main/public/readme/markdown-render-hero.svg" alt="Markdown Flow preview showing rich document blocks" width="100%" />
+  <img src="https://raw.githubusercontent.com/hrisheesh/markdown-flow/main/public/readme/markdown-flow-hero.svg" alt="Markdown Flow preview showing rich document blocks" width="100%" />
 </p>
 
 <p align="center">
@@ -65,7 +65,6 @@ import { RichMarkdown } from "markdown-flow";
 - **Better interactive semantics** — citations, accordions, tabs, progress indicators, and charts now expose clearer accessible labels, state, and relationships.
 - **Release-grade safeguards** — render contracts, React 18/19 packed-package compatibility tests, size budgets, and CI protect the published surface.
 
-See the full [0.1.2 release notes](RELEASE_NOTES.md).
 
 ### Migrating from the scoped package
 
@@ -339,7 +338,6 @@ Small copy-ready starting points are also included in the repository:
 
 - [`examples/react-vite.tsx`](examples/react-vite.tsx) — standard React/Vite client rendering.
 - [`examples/next-app-router.tsx`](examples/next-app-router.tsx) — static Markdown in a Next.js App Router Server Component.
-- [`RELEASE_NOTES.md`](RELEASE_NOTES.md) — package-facing changes and release history.
 
 ## Repository quality
 
