@@ -42,15 +42,15 @@ function CitationBadge({ citation }: { citation: Citation }) {
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
-        className="mx-1 inline-flex size-5 translate-y-[-2px] items-center justify-center rounded-full bg-ink text-[10px] font-bold text-white transition hover:-translate-y-1 hover:bg-brand-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue/40 focus-visible:ring-offset-2"
+        className="mx-1 inline-flex size-[1.2rem] translate-y-[-1px] items-center justify-center rounded-full bg-ink text-[9px] font-bold text-white transition-colors duration-150 hover:bg-brand-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue/40 focus-visible:ring-offset-2"
         title={`Source: ${citation.filename}`}
       >
         {citation.id.replace(/[\[\]]/g, "")}
       </button>
 
       {open && (
-        <div className="absolute bottom-full left-1/2 z-50 mb-3 w-[min(18rem,calc(100vw-2rem))] -translate-x-1/2 rounded-lg border border-hairline bg-white p-3 text-left text-xs leading-5 text-charcoal shadow-xl">
-          <div className="mb-1 font-bold text-ink">{citation.filename}</div>
+        <div className="absolute bottom-full left-1/2 z-50 mb-3 w-[min(19rem,calc(100vw-2rem))] -translate-x-1/2 rounded-xl border border-hairline bg-white p-3.5 text-left text-xs leading-5 text-charcoal shadow-[0_16px_40px_rgba(23,23,23,0.12)]">
+          <div className="mb-1 font-semibold text-ink">{citation.filename}</div>
           {citation.contextual_header && (
             <div className="mb-2 font-semibold text-steel">{citation.contextual_header}</div>
           )}
@@ -121,7 +121,7 @@ export default function RichMarkdown({
   citations?: Citation[];
 }) {
   return (
-    <div className="chat-markdown min-w-0 text-[15px] font-medium leading-7 text-charcoal sm:text-base">
+    <div className="chat-markdown min-w-0 text-[15px] font-normal leading-7 text-charcoal sm:text-[16px] sm:leading-8">
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkMath]}
         rehypePlugins={[
@@ -141,53 +141,53 @@ export default function RichMarkdown({
         ]}
         components={{
           h1: ({ children }) => (
-            <h1 className="mb-5 mt-8 text-2xl font-black leading-tight text-ink first:mt-0 sm:mt-10 sm:text-4xl">
+            <h1 className="mb-7 mt-12 text-[2rem] font-semibold tracking-[-0.045em] leading-[1.08] text-ink first:mt-0 sm:mt-16 sm:text-[3.25rem]">
               <InlineWithCitations citations={citations}>{children}</InlineWithCitations>
             </h1>
           ),
           h2: ({ children }) => (
-            <h2 className="mb-4 mt-8 border-b border-hairline-soft pb-2 text-xl font-extrabold leading-snug text-ink first:mt-0 sm:mt-9 sm:text-2xl">
+            <h2 className="mb-4 mt-11 scroll-mt-8 border-b border-hairline-soft pb-3 text-[1.5rem] font-semibold tracking-[-0.035em] leading-tight text-ink first:mt-0 sm:mt-14 sm:text-[2rem]">
               <InlineWithCitations citations={citations}>{children}</InlineWithCitations>
             </h2>
           ),
           h3: ({ children }) => (
-            <h3 className="mb-3 mt-6 text-lg font-bold leading-snug text-ink first:mt-0 sm:mt-7 sm:text-xl">
+            <h3 className="mb-3 mt-8 scroll-mt-8 text-lg font-semibold tracking-[-0.025em] leading-snug text-ink first:mt-0 sm:mt-10 sm:text-xl">
               <InlineWithCitations citations={citations}>{children}</InlineWithCitations>
             </h3>
           ),
           h4: ({ children }) => (
-            <h4 className="mb-2 mt-5 text-base font-bold leading-snug text-ink first:mt-0 sm:mt-6 sm:text-lg">
+            <h4 className="mb-2 mt-7 scroll-mt-8 text-base font-semibold leading-snug text-ink first:mt-0 sm:mt-8 sm:text-lg">
               <InlineWithCitations citations={citations}>{children}</InlineWithCitations>
             </h4>
           ),
           h5: ({ children }) => (
-            <h5 className="mb-2 mt-5 text-base font-bold leading-snug text-ink first:mt-0">
+            <h5 className="mb-2 mt-6 text-base font-semibold leading-snug text-ink first:mt-0">
               <InlineWithCitations citations={citations}>{children}</InlineWithCitations>
             </h5>
           ),
           h6: ({ children }) => (
-            <h6 className="mb-2 mt-5 text-sm font-bold uppercase leading-snug text-steel first:mt-0">
+            <h6 className="mb-2 mt-6 text-[11px] font-semibold uppercase tracking-[0.14em] leading-snug text-steel first:mt-0">
               <InlineWithCitations citations={citations}>{children}</InlineWithCitations>
             </h6>
           ),
           p: ({ children }) => (
-            <p className="my-4 leading-7 text-charcoal first:mt-0 last:mb-0 sm:leading-8">
+            <p className="my-5 leading-7 text-charcoal first:mt-0 last:mb-0 sm:leading-8">
               <InlineWithCitations citations={citations}>{children}</InlineWithCitations>
             </p>
           ),
-          strong: ({ children }) => <strong className="font-extrabold text-ink">{children}</strong>,
+          strong: ({ children }) => <strong className="font-semibold text-ink">{children}</strong>,
           em: ({ children }) => <em className="italic text-charcoal">{children}</em>,
           del: ({ children }) => <del className="text-steel decoration-steel/70">{children}</del>,
           blockquote: ({ children }) => (
-            <blockquote className="my-6 rounded-r-lg border-l-4 border-brand-blue bg-brand-blue/5 px-4 py-4 text-[0.96em] leading-7 text-slate sm:px-5 sm:leading-8">
+            <blockquote className="my-7 border-l-2 border-brand-blue/70 pl-5 text-[0.98em] leading-7 text-slate sm:pl-6 sm:leading-8">
               {children}
             </blockquote>
           ),
           ul: ({ children }) => (
-            <ul className="my-4 list-disc space-y-2 pl-5 marker:text-brand-blue sm:pl-6">{children}</ul>
+            <ul className="my-5 list-disc space-y-2.5 pl-5 marker:text-brand-blue sm:pl-6">{children}</ul>
           ),
           ol: ({ children }) => (
-            <ol className="my-4 list-decimal space-y-2 pl-5 marker:font-bold marker:text-brand-blue sm:pl-6">
+            <ol className="my-5 list-decimal space-y-2.5 pl-5 marker:font-semibold marker:text-brand-blue sm:pl-6">
               {children}
             </ol>
           ),
@@ -222,23 +222,23 @@ export default function RichMarkdown({
             }
 
             return (
-              <code className="mx-0.5 break-words rounded bg-surface-soft px-1.5 py-0.5 font-mono text-[0.9em] font-semibold text-ink ring-1 ring-hairline-soft">
+              <code className="mx-0.5 break-words rounded-md bg-surface-soft px-1.5 py-0.5 font-mono text-[0.87em] font-medium text-ink">
                 {children}
               </code>
             );
           },
           table: ({ children }) => (
-            <div className="internal-scroll my-6 max-w-full overflow-x-auto rounded-lg border border-hairline bg-white shadow-sm">
+            <div className="internal-scroll my-8 max-w-full overflow-x-auto rounded-xl border border-hairline bg-white">
               <table className="w-full min-w-[34rem] border-collapse text-left text-sm sm:min-w-[40rem]">{children}</table>
             </div>
           ),
           thead: ({ children }) => (
-            <thead className="border-b border-hairline bg-surface-soft text-xs font-bold uppercase text-ink">
+            <thead className="border-b border-hairline bg-surface-soft text-[11px] font-semibold uppercase tracking-[0.08em] text-ink">
               {children}
             </thead>
           ),
           tbody: ({ children }) => <tbody className="divide-y divide-hairline-soft bg-white">{children}</tbody>,
-          tr: ({ children }) => <tr className="transition-colors hover:bg-surface/60">{children}</tr>,
+          tr: ({ children }) => <tr className="transition-colors duration-150 hover:bg-surface/60">{children}</tr>,
           th: ({ children }) => (
             <th className="whitespace-nowrap px-3 py-3 align-bottom font-bold sm:px-4">
               <InlineWithCitations citations={citations}>{children}</InlineWithCitations>
@@ -254,19 +254,19 @@ export default function RichMarkdown({
               href={href}
               target="_blank"
               rel="noreferrer"
-              className="font-semibold text-brand-blue underline decoration-brand-blue/30 underline-offset-4 transition hover:text-brand-blue-deep hover:decoration-brand-blue/80 focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-blue/35"
+              className="font-medium text-brand-blue underline decoration-brand-blue/35 underline-offset-4 transition-colors duration-150 hover:text-brand-blue-deep hover:decoration-brand-blue/80 focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-blue/35"
             >
               <InlineWithCitations citations={citations}>{children}</InlineWithCitations>
             </a>
           ),
-          hr: () => <hr className="my-8 border-t border-hairline-soft" />,
+          hr: () => <hr className="my-10 border-t border-hairline-soft" />,
           img: ({ src, alt, title }) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={src || ""}
               alt={alt || ""}
               title={title}
-              className="my-6 h-auto max-h-[70svh] w-full rounded-lg border border-hairline-soft object-contain shadow-sm sm:max-h-[40rem]"
+              className="my-8 h-auto max-h-[70svh] w-full rounded-xl border border-hairline-soft object-contain sm:max-h-[40rem]"
               loading="lazy"
             />
           ),
